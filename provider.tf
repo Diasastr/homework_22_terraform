@@ -1,6 +1,16 @@
+# У файлі провайдера вказано, як Terraform має взаємодіяти з AWS для створення та управління ресурсами.
 provider "aws" {
-  region                  = var.region
-  shared_credentials_files = ["C:\\Users\\streb\\.aws\\credentials"] #change to the location of your credentials
-  profile                 = "default"
+  # Регіон, у якому Terraform буде створювати та управляти ресурсами AWS.
+  # Значення var.region має бути визначено у файлах змінних Terraform, де ви вкажете конкретний регіон, наприклад "eu-north-1".
+  region = var.region
+
+  # Шлях до файлу з обліковими даними AWS.
+  # Terraform використовує цей файл для аутентифікації в AWS. Вам потрібно зазначити шлях до вашого файлу облікових даних. Він створюється 
+  # автоматично, коли ви використовуєте команду aws configure з credentials від AWS User, якого створили раніше.
+  shared_credentials_files = ["C:\\Users\\streb\\.aws\\credentials"] # Змініть на розташування вашого файлу облікових даних
+
+  # Профіль, що використовується з файлу облікових даних.
+  # Ви можете мати кілька профілів у файлі .aws/credentials, і Terraform використовуватиме той, який вказано тут.
+  profile = "default"
 }
 
